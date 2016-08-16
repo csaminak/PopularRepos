@@ -11,21 +11,30 @@
         this.username = '';
         this.allRepos = [];
         this.getRepos = getRepos;
+        this.message = null;
 
 
 
         function getRepos(username) {
             if(!username) {
+                that.message = 'please type in a username to search';
                 return;
             }
             repos.getUserRepos(username)
                 .then(function(repos) {
                     console.log(repos);
+                    if (!repos.length) {
+                        that.message = 'User does not have any repos, try another user?';
+                    }
                     repos.forEach(function(repo) {
                         repo.popularity = calcPopularity(repo);
                     });
                     that.allRepos = repos;
                     that.username = '';
+                })
+                .catch(function(err) {
+                    console.log(err);
+                    that.message = 'Oops something went wrong';
                 });
         }
 
