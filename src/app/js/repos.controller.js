@@ -12,6 +12,7 @@
         this.allRepos = [];
         this.getRepos = getRepos;
         this.message = null;
+        this.reverse = false;
 
         /**
          * Retrieves the specfied user's repos and then adds a popularity property
@@ -34,9 +35,8 @@
                     repos.forEach(function(repo) {
                         repo.popularity = calcPopularity(repo);
                     });
-                    that.allRepos = repos.sort(function(repo1, repo2) {
-                        return (repo1.popularity - repo2.popularity)*(-1);
-                    });
+                    that.allRepos = repos;
+
                     that.username = '';
                 })
                 .catch(function(err) {
@@ -53,7 +53,6 @@
         function calcPopularity(repo) {
             return (repo.stargazers_count + (2*repo.forks_count) + (repo.open_issues_count/2));
         }
-
 
     }
 
