@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app='popRepos'>
     <head>
         <meta charset='utf-8'>
         <title>Popular Repos</title>
@@ -15,27 +15,34 @@
             <h1>View a GitHub User's Most Popular Repositories!</h1>
         </header>
 
-        <form>
-            <input type='text' placeholder='github username'>
-        </form>
+        <main ng-controller='ReposController as reposCtrl'>
+            <form name='getRepos' ng-submit='reposCtrl.getRepos(reposCtrl.username)'>
+                </div>
+                    <label for='ghusername'>Github Username</label>
+                    <input id='ghusername' type='text' placeholder='github username'
+                                name='ghusername' ng-model='reposCtrl.username' required>
+                </div>
+            </form>
 
-        <section>
-            <h3>Most Popular Repos for [User]</h3>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Repo Name</th>
-                        <th><button>Popularity Calc</button></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>[name]</td>
-                        <td>[popularity calc]</td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
+            <section>
+                <h3>Most Popular Repos for [User]</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Repo Name</th>
+                            <th><button>Popularity Calc</button></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat='repo in reposCtrl.allRepos'>
+                            <td>[name]</td>
+                            <td>[popularity calc]</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+        </main>
+
 
 
         <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.js'></script>
