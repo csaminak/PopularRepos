@@ -34,11 +34,11 @@
                     <thead>
                         <tr>
                             <th>Repo Name</th>
-                            <th><button>Popularity Calc</button></th>
+                            <th><button ng-click='reposCtrl.reverse = !reposCtrl.reverse'>Popularity Calc</button></th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr ng-repeat='repo in reposCtrl.allRepos'>
+                        <tr ng-repeat='repo in reposCtrl.allRepos | popularity:reposCtrl.reverse'>
                             <td>{{repo.name}}</td>
                             <td>{{repo.popularity}}</td>
                         </tr>
