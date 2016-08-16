@@ -13,8 +13,6 @@
         this.getRepos = getRepos;
         this.message = null;
 
-
-
         function getRepos(username) {
             if(!username) {
                 that.message = 'please type in a username to search';
@@ -29,7 +27,9 @@
                     repos.forEach(function(repo) {
                         repo.popularity = calcPopularity(repo);
                     });
-                    that.allRepos = repos;
+                    that.allRepos = repos.sort(function(repo1, repo2) {
+                        return (repo1.popularity - repo2.popularity)*(-1);
+                    });
                     that.username = '';
                 })
                 .catch(function(err) {
@@ -41,13 +41,11 @@
         /**
          * Uses an individual repo's properties to calculate it's popularity
          * @param  {Object }    repo    contains properties to calc popularity
-         * @return {Number}             the calculaed popularity of the repo
+         * @return {Number}             the calculated popularity of the repo
          */
         function calcPopularity(repo) {
             return (repo.stargazers_count + (2*repo.forks_count) + (repo.open_issues_count/2));
         }
-
-
 
 
     }

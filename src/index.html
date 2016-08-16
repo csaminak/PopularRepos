@@ -15,7 +15,7 @@
             <h1>View a GitHub User's Most Popular Repositories!</h1>
         </header>
 
-        <main ng-cloak ng-controller='ReposController as reposCtrl'>
+        <main ng-controller='ReposController as reposCtrl' ng-cloak>
             <form name='getRepos' ng-submit='reposCtrl.getRepos(reposCtrl.username)'>
                 </div>
                     <label for='ghusername'>Github Username</label>
