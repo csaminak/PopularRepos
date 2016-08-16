@@ -10,13 +10,23 @@
         var that = this;
         this.username = '';
         this.allRepos = [];
-        
+        this.getRepos = getRepos;
 
-        repos.getUserRepos(this.username)
-            .then(function(repos) {
-                console.log(repos);
-                that.allRepos = repos;
-            });
+
+        
+        function getRepos(username) {
+            if(!username) {
+                return;
+            }
+            repos.getUserRepos(username)
+                .then(function(repos) {
+                    console.log(repos);
+                    that.allRepos = repos;
+                    that.username = '';
+                });
+        }
+
+
     }
 
 
