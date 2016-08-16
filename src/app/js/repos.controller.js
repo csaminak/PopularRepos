@@ -13,12 +13,19 @@
         this.getRepos = getRepos;
         this.message = null;
 
+        /**
+         * Retrieves the specfied user's repos and then adds a popularity property
+         * that is calculated for each repo, and then all repos are sorted to
+         * return the the highest popularity calc first.
+         * @param  {String}     username    the user who's repos to return
+         * @return {Array}                  the updated/sorted array of repos
+         */
         function getRepos(username) {
             if(!username) {
                 that.message = 'please type in a username to search';
                 return;
             }
-            repos.getUserRepos(username)
+            return repos.getUserRepos(username)
                 .then(function(repos) {
                     console.log(repos);
                     if (!repos.length) {
