@@ -60,7 +60,7 @@ module.exports = function(grunt) {
             },
             js: {
                 files: ['src/app/**/*.js'],
-                tasks: ['jshint', 'test', 'concat']
+                tasks: ['jshint', 'concat']
             },
             html: {
                 files: ['src/**/*.html'],
