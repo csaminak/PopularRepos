@@ -9,14 +9,7 @@
     ReposService.$inject = ['$http', '$q'];
 
     function ReposService($http, $q) {
-
-        var apiKey;
-        try {
-            apiKey = JSON.parse(localStorage.getItem('apiKey'));
-        } catch (err) {
-            //does not matter because apiKey isn't required to retieve
-            //a user's repos, this is done solely for testing app.
-        }
+        var apiKey = localStorage.getItem('apiKey');
 
         return {
             getUserRepos: getUserRepos
@@ -28,14 +21,15 @@
          * @return {Promise/Object}      hold the methods of which to return data
          */
         function getUserRepos(username) {
+            console.log('in service getRepos');
             if(!username) {
                 return $q.reject(new Error('need a username to retieve repos'));
             }
             return $http({
-                url: 'https://api.github.com/users' + username + '/repos',
+                url: 'https://api.github.com/users/' + username + '/repos',
                 method: 'get',
                 headers: {
-                    Authorization: 'Authorization token ' + apiKey
+                    'Authorization': 'token ' + apiKey
                 }
             })
             .then(function(response) {
