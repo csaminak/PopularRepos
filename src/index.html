@@ -6,13 +6,36 @@
 
         <meta name='description' content='Allow a user to input a username and see all GitHub repos for that user, in order of "popularity."'>
         <meta name='author' content='Samina Chhatwal'>
+
+        <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css' type='text/css'>
         <link href='css/styles.css' rel='stylesheet' type='text/css'>
     </head>
     <body>
         <header>
-            <h1>Popular Repositories!</h1>
+            <h1>View a GitHub User's Most Popular Repositories!</h1>
         </header>
 
+        <form>
+            <input type='text' placeholder='github username'>
+        </form>
+
+        <section>
+            <h3>Most Popular Repos for [User]</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Repo Name</th>
+                        <th><button>Popularity Calc</button></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>[name]</td>
+                        <td>[popularity calc]</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
 
 
         <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.js'></script>
