@@ -24,8 +24,8 @@
                 </div>
             </form>
 
-            <section ng-cloak>
-                <h3>Most Popular Repos for [User]</h3>
+            <section ng-show='reposCtrl.allRepos.length'>
+                <h3>Most Popular Repos for {{reposCtrl.username}}</h3>
                 <table>
                     <thead>
                         <tr>
