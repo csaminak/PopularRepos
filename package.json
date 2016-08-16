@@ -1,0 +1,12 @@
+{
+  "name": "popular-repos",
+  "version": "1.0.0",
+  "description": "Allow a user to input a username and see all GitHub repos for that user, in order of 'popularity.'",
+  "main": "Gruntfile.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/csaminak/PopularRepos.git"
+  },
+  "author": "Samina Chhatwal",
+  "license": "MIT",
+}
