@@ -24,7 +24,7 @@
                 </div>
             </form>
 
-            <section>
+            <section ng-cloak>
                 <h3>Most Popular Repos for [User]</h3>
                 <table>
                     <thead>
@@ -35,8 +35,8 @@
                     </thead>
                     <tbody>
                         <tr ng-repeat='repo in reposCtrl.allRepos'>
-                            <td>[name]</td>
-                            <td>[popularity calc]</td>
+                            <td>{{repo.name}}</td>
+                            <td>{{repo.popularity}}</td>
                         </tr>
                     </tbody>
                 </table>

@@ -13,8 +13,9 @@
         this.getRepos = getRepos;
 
 
-        
+
         function getRepos(username) {
+            console.log(username);
             if(!username) {
                 return;
             }
