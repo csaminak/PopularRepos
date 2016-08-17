@@ -9,11 +9,12 @@
     function ReposController(repos) {
         var that = this;
         this.username = '';
+        this.user = '';
         this.allRepos = [];
-        console.log('changing allRepos now!');
         this.getRepos = getRepos;
         this.message = null;
         this.reverse = false;
+        this.showModal = false;
 
         /**
          * Retrieves the specfied user's repos and then adds a popularity property
@@ -27,9 +28,9 @@
                 that.message = 'please type in a username to search';
                 return;
             }
+            that.user = username;
             return repos.getUserRepos(username)
                 .then(function(repos) {
-                    console.log('repo controller, getRepos, repos: ', repos);
                     if (!repos.length) {
                         that.message = 'User does not have any repos, try another user?';
                     }

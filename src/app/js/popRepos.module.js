@@ -21,7 +21,6 @@
          * @return {Promise/Object}      hold the methods of which to return data
          */
         function getUserRepos(username) {
-            console.log('in service getRepos');
             if(!username) {
                 return $q.reject(new Error('need a username to retieve repos'));
             }
@@ -33,12 +32,10 @@
                 }
             })
             .then(function(response) {
-                console.log('response', response);
                 return response.data;
             })
             .catch(function(err) {
                 console.log(err);
-                //TODO some error because unable to retrieve repos
             });
         }
 
