@@ -17,9 +17,9 @@
 
         <main ng-controller='ReposController as reposCtrl' ng-cloak>
             <form name='getRepos' ng-submit='reposCtrl.getRepos(reposCtrl.username)'>
-                </div>
+            </div class='form-group'>
                     <label for='ghusername'>Github Username</label>
-                    <input id='ghusername' type='text' placeholder='github username'
+                    <input id='ghusername' class='form-control' type='text' placeholder='github username'
                                 name='ghusername' ng-model='reposCtrl.username' required>
                 </div>
             </form>
@@ -30,15 +30,19 @@
 
             <section ng-show='reposCtrl.allRepos.length'>
                 <h3>Most Popular Repos for {{reposCtrl.user}}</h3>
-                <table>
+                <table class='table table-bordered'>
                     <thead>
                         <tr>
                             <th>Repo Name</th>
-                            <th><button ng-click='reposCtrl.reverse = !reposCtrl.reverse'>Popularity Calc</button></th>
+                            <th>
+                                <button class='btn btn-success' ng-click='reposCtrl.reverse = !reposCtrl.reverse'>
+                                    Popularity Calc
+                                </button>
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr ng-repeat='repo in reposCtrl.allRepos | popularity:reposCtrl.reverse'>
+                        <tr class='indRepo' ng-repeat='repo in reposCtrl.allRepos | popularity:reposCtrl.reverse'>
                             <td ng-click='reposCtrl.showModal = !reposCtrl.showModal'>{{repo.name}}</td>
                             <td>{{repo.popularity}}</td>
                             <modal detail='repo' ng-show='reposCtrl.showModal'></modal>
