@@ -1,0 +1,12 @@
+<aside>
+    <header>
+        <h4>Name: {{detail.name}}</h4>
+    </header>
+    <main class='modalContent' ng-transclude>
+        <ul>
+            <li>Owner of repo: {{detail.owner.login}}</li>
+            <li>Repo has been forked: {{detail.fork}}</li>
+            <li>Popularity#: {{detail.popularity}}</li>
+        </ul>
+    </main>
+</aside>
