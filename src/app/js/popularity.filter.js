@@ -6,14 +6,21 @@
 
     function PopularityFilter() {
         console.log('in popularity');
-        return function reverse(repos, reverse) {
-            repos.sort(function(repo1, repo2) {
+        return function sort(repos, reverse) {
+            console.log('popularity filter, sort, repos: ', repos);
+
+            // We have to create a copy because "repos" is the same array the controller is watching
+            // and every time we execute our sort function below, the controller "sees" that change
+            // and thus the digest cycle gets overloaded and says its in an infinite loop.
+            // This is because "repos" is passed "by reference" versus primitives,
+            // which are passed "by value".
+            var copy = [].concat(repos);
+            return copy.sort(function(repo1, repo2) {
                 var repoPop = repo1.popularity - repo2.popularity;
                 if(reverse) {
                     return repoPop;
-                } else if(!reverse) {
-                    return repoPop * -1;
                 }
+                return repoPop * -1;
             });
         };
     }
