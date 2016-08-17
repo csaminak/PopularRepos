@@ -29,7 +29,7 @@
             </section>
 
             <section ng-show='reposCtrl.allRepos.length'>
-                <h3>Most Popular Repos for {{reposCtrl.username}}</h3>
+                <h3>Most Popular Repos for {{reposCtrl.user}}</h3>
                 <table>
                     <thead>
                         <tr>
@@ -39,8 +39,9 @@
                     </thead>
                     <tbody>
                         <tr ng-repeat='repo in reposCtrl.allRepos | popularity:reposCtrl.reverse'>
-                            <td>{{repo.name}}</td>
+                            <td ng-click='reposCtrl.showModal = !reposCtrl.showModal'>{{repo.name}}</td>
                             <td>{{repo.popularity}}</td>
+                            <modal detail='repo' ng-show='reposCtrl.showModal'></modal>
                         </tr>
                     </tbody>
                 </table>
