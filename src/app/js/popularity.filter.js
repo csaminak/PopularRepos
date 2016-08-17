@@ -16,11 +16,15 @@
             // which are passed "by value".
             var copy = [].concat(repos);
             return copy.sort(function(repo1, repo2) {
-                var repoPop = repo1.popularity - repo2.popularity;
-                if(reverse) {
-                    return repoPop;
+                var repoDiff = repo1.popularity - repo2.popularity;
+                if (repoDiff === 0) {
+                    repoDiff = repo1.created_at - repo2.created_at;
                 }
-                return repoPop * -1;
+
+                if (reverse) {
+                    return repoDiff;
+                }
+                return repoDiff * -1;
             });
         };
     }
