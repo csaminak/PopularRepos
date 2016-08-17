@@ -1,0 +1,22 @@
+main {
+    margin: 0 auto;
+    width: $mainWidth;
+}
+div {
+    width: 100%;
+}
+label {
+    margin: 0 auto;
+    font-size: $defaultFontSize;
+    text-align: center;
+}
+.form-control {
+    margin: 0 auto;
+    width: $userInputWidth;
+}
+[ng-cloak] {
+    display: none;
+}
+[ng-cloak]:active {
+    display: none;
+}
