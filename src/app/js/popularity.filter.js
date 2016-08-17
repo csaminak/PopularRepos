@@ -18,7 +18,7 @@
             return copy.sort(function(repo1, repo2) {
                 var repoDiff = repo1.popularity - repo2.popularity;
                 if (repoDiff === 0) {
-                    repoDiff = repo1.created_at - repo2.created_at;
+                    repoDiff = new Date(repo1.created_at) - new Date(repo2.created_at);
                 }
 
                 if (reverse) {
