@@ -10,6 +10,7 @@
         var that = this;
         this.username = '';
         this.allRepos = [];
+        console.log('changing allRepos now!');
         this.getRepos = getRepos;
         this.message = null;
         this.reverse = false;
@@ -28,7 +29,7 @@
             }
             return repos.getUserRepos(username)
                 .then(function(repos) {
-                    console.log(repos);
+                    console.log('repo controller, getRepos, repos: ', repos);
                     if (!repos.length) {
                         that.message = 'User does not have any repos, try another user?';
                     }
@@ -36,12 +37,11 @@
                         repo.popularity = calcPopularity(repo);
                     });
                     that.allRepos = repos;
-
                     that.username = '';
                 })
                 .catch(function(err) {
                     console.log(err);
-                    that.message = 'Oops something went wrong';
+                    that.message = 'Uh oh, are you sure you typed the correct user?';
                 });
         }
 
