@@ -9,7 +9,6 @@
     ReposService.$inject = ['$http', '$q'];
 
     function ReposService($http, $q) {
-        var apiKey = localStorage.getItem('apiKey');
 
         return {
             getUserRepos: getUserRepos
@@ -22,13 +21,13 @@
          */
         function getUserRepos(username) {
             if(!username) {
-                return $q.reject(new Error('need a username to retieve repos'));
+                return $q.reject(new Error('need a username to retrieve repos'));
             }
             return $http({
                 url: 'https://api.github.com/users/' + username + '/repos',
-                method: 'get',
+                method: 'GET',
                 headers: {
-                    'Authorization': 'token ' + apiKey
+                    'Content-Type': 'application/json'
                 }
             })
             .then(function(response) {
