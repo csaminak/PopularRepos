@@ -8,10 +8,7 @@
         return {
             restrict: 'E',
             templateUrl: 'app/templates/modal.template.html',
-            transclude: true,
-            scope: {
-                detail: '='
-            }
+            transclude: true
         };
     }
 

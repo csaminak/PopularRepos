@@ -3,11 +3,14 @@
 }
 
 modal {
+    @include modalBorder(2px);
+    @include modalShadow;
     position: absolute;
     background-color: $modalBackground;
-    border: 2px solid $borderColor;
+    border-radius: $modalCorner;
     text-align: center;
     left: 20%;
+    top: 20%;
     color: $modalFont;
     width: 50%;
 

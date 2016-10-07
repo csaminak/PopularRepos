@@ -13,15 +13,15 @@
             // which are passed "by value".
             var copy = [].concat(repos);
             return copy.sort(function(repo1, repo2) {
-                var repoDiff = repo1.popularity - repo2.popularity;
+                var repoDiff = repo2.popularity - repo1.popularity;
                 if (repoDiff === 0) {
-                    repoDiff = new Date(repo1.created_at) - new Date(repo2.created_at);
+                    repoDiff = new Date(repo2.created_at) - new Date(repo1.created_at);
                 }
 
                 if (reverse) {
-                    return repoDiff;
+                    return repoDiff * -1;
                 }
-                return repoDiff * -1;
+                return repoDiff;
             });
         };
     }

@@ -14,7 +14,7 @@
         this.getRepos = getRepos;
         this.message = null;
         this.reverse = false;
-        this.showModal = false;
+        this.showRepo = null;
 
         /**
          * Retrieves the specfied user's repos and then adds a popularity property

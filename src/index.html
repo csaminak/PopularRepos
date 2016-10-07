@@ -9,6 +9,7 @@
 
         <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css' type='text/css'>
         <link href='css/styles.css' rel='stylesheet' type='text/css'>
+
     </head>
     <body>
         <header>
@@ -36,16 +37,24 @@
                             <th>Repo Name</th>
                             <th>
                                 <button class='btn btn-success' ng-click='reposCtrl.reverse = !reposCtrl.reverse'>
-                                    Popularity Calc
+                                    Reverse
                                 </button>
                             </th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr class='indRepo' ng-repeat='repo in reposCtrl.allRepos | popularity:reposCtrl.reverse'>
-                            <td ng-click='reposCtrl.showModal = !reposCtrl.showModal'>{{repo.name}}</td>
-                            <td>{{repo.popularity}}</td>
-                            <modal detail='repo' ng-show='reposCtrl.showModal'></modal>
+                            <td ng-click='reposCtrl.showRepo = $index'>{{repo.name}}</td>
+                            <td>
+                                {{repo.popularity}}
+                                <modal ng-show='reposCtrl.showRepo === $index'>
+                                    <ul>
+                                        <li>Repo Owner: <span class='data'>{{repo.owner.login}}</span></li>
+                                        <li>Repo has been forked: <span class='data'>{{repo.fork}}</span></li>
+                                        <li>Popularity#: <span class='data'>{{repo.popularity}}</span></li>
+                                    </ul>
+                                </modal>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
